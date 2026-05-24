@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: .8;
+      transform: scale(1.02);
+    }
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sfpro);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* NOTE: prefers-color-scheme dark has been intentionally removed.
+   The site uses a scroll-driven light → dark → cream color system.
+   Respecting OS dark mode would break the opening "bright white" PRD requirement. */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Font applied via --font-sfpro CSS variable from next/font */
+  font-family: var(--font-sfpro), system-ui, -apple-system, sans-serif;
+}
+
+/* Smooth scroll behavior — complementary to Lenis */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
